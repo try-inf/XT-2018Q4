@@ -1,0 +1,7 @@
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Simple\bin\Debug\Epam.Task1.Simple.exe.config
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Simple\bin\Debug\Epam.Task1.Simple.exe
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Simple\bin\Debug\Epam.Task1.Simple.pdb
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Simple\obj\Debug\Epam.Task1.Simple.csproj.CoreCompileInputs.cache
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Simple\obj\Debug\Epam.Task1.Simple.exe
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Simple\obj\Debug\Epam.Task1.Simple.pdb
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Simple\obj\Debug\Epam.Task1.Simple.csprojResolveAssemblyReference.cache

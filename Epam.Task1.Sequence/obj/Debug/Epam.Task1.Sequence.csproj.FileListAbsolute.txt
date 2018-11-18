@@ -1,0 +1,7 @@
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Sequence\bin\Debug\Epam.Task1.Sequence.exe.config
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Sequence\bin\Debug\Epam.Task1.Sequence.exe
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Sequence\bin\Debug\Epam.Task1.Sequence.pdb
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Sequence\obj\Debug\Epam.Task1.Sequence.csprojResolveAssemblyReference.cache
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Sequence\obj\Debug\Epam.Task1.Sequence.csproj.CoreCompileInputs.cache
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Sequence\obj\Debug\Epam.Task1.Sequence.exe
+C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Sequence\obj\Debug\Epam.Task1.Sequence.pdb
