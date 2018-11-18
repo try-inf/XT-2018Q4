@@ -28,6 +28,34 @@ namespace Epam.Task1.Square
         {
             Console.WriteLine("Enter a positive odd number: ");
 
+            try          //using    try..catch blocks to prevent using the incorrect format of data
+            {
+                int res = int.Parse(Console.ReadLine());
+
+                if (res % 2 == 0)
+                {
+                    Console.WriteLine("Please enter an odd number (not even)");
+                    Console.ReadLine();
+                }
+                else
+                {
+                    Square(res);
+                    Console.ReadLine();
+                }
+            }
+        
+            catch(FormatException)
+            {
+                Console.WriteLine("You entered not a number");
+                Console.ReadLine();
+            }
+
+
+
+
+            /*     
+
+            //using TryParse method to prevent using the incorrect format of data
             bool check = int.TryParse(Console.ReadLine(), out int res);
 
             if (check)
@@ -48,6 +76,8 @@ namespace Epam.Task1.Square
                 Console.WriteLine("You entered not a number");
                 Console.ReadLine();
             }
+            */
+
         }
     }
 }
