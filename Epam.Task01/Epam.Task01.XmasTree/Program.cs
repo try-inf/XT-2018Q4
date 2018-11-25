@@ -16,11 +16,13 @@ namespace Epam.Task01.XmasTree
                 {
                     for (int j = 0; j < 2 * m + 1 + n; j++)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.Write((j < n - i) || (j > n + i) ? " " : "*");
                     }
                     Console.WriteLine();
                 }
             }
+            Console.ResetColor();
         }
 
         static void Main(string[] args)

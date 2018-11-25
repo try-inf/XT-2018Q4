@@ -14,10 +14,12 @@ namespace Epam.Task01.AnotherTriangle
             {
                 for (int j = 0; j < 2 * n + 1; j++)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.Write((j < n - i)||(j > n + i) ? " ":"*");
                 }
                 Console.WriteLine();
             }
+            Console.ResetColor();
         }
 
         static void Main(string[] args)
