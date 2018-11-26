@@ -8,42 +8,69 @@ namespace Epam.Task01.FontAdjustment
 {
     class Program
     {
-       
+       [Flags]
         enum FontStyles
         {
             None = 0,
             Bold = 1,
             Italic = 2,
-            Underline = 4
+            Underline = 4,
         }
-
-        static void SetFontProp(FontStyles fs)
-        {
-            switch (fs)
-            {
-                case FontStyles.None:
-                    Console.WriteLine("Параметры надписи: {0}", FontStyles.None.ToString());
-                    break;
-                case FontStyles.Bold:
-                    Console.WriteLine("Параметры надписи: {0}", FontStyles.Bold.ToString());
-                    break;
-                case FontStyles.Italic:
-                    Console.WriteLine("Параметры надписи: {0}", FontStyles.Italic.ToString());
-                    break;
-                case FontStyles.Underline:
-                    Console.WriteLine("Параметры надписи: {0}", FontStyles.Underline.ToString());
-                    break;
-            }
-        }
-
 
         static void Main(string[] args)
         {
-            
-            Console.WriteLine("Введите: \n\r 1: bold \n\r 2: italic \n\r 3: underline");
-            int n = int.Parse(Console.ReadLine());
+            string t = string.Empty;
+            int n = 0;
+            int sum = 0;
+            char[] resToChar = new char[3];
+            while (true)
+            {
+                Console.WriteLine("Please choose font style: \n\r 1: bold \n\r 2: italic \n\r 4: underline \n\n\r If you want to exit then press \"9\"");
 
-            SetFontProp((FontStyles)n);
+                bool check = int.TryParse(Console.ReadLine(), out n);
+                if (check)
+                {
+                    if (n == 1 | n == 2 | n == 4)
+                    {
+                        if (t.Contains(n.ToString()))
+                        {
+                            int i = t.IndexOf(n.ToString());
+                            t = t.Remove(i, 1);
+                        }
+                        else
+                        {
+                            t += n.ToString();
+                        }
+
+                        resToChar = t.ToCharArray();
+
+                        for (int i = 0; i < resToChar.Length; i++)
+                        {
+                            sum += int.Parse(resToChar[i].ToString());
+                        }
+
+                        Console.WriteLine();
+                        Console.WriteLine("Selected parametres: {0}", (FontStyles)sum);
+                        sum = 0;
+
+                    }
+                    else if (n==9)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You should enter 1, 2 or 4 to choose font style (or 9-to exit)");
+                    }
+
+                    
+                }
+                else
+                {
+                    Console.WriteLine("Wrong input");
+                }
+
+            }
 
             Console.WriteLine(Environment.NewLine + "Press any key to exit.");
             Console.ReadKey();
