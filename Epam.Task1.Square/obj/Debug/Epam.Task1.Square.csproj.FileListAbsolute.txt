@@ -1,7 +1,0 @@
-C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Square\bin\Debug\Epam.Task1.Square.exe.config
-C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Square\bin\Debug\Epam.Task1.Square.exe
-C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Square\bin\Debug\Epam.Task1.Square.pdb
-C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Square\obj\Debug\Epam.Task1.Square.csprojResolveAssemblyReference.cache
-C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Square\obj\Debug\Epam.Task1.Square.csproj.CoreCompileInputs.cache
-C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Square\obj\Debug\Epam.Task1.Square.exe
-C:\Users\Лилия Аранович\source\repos\Epam.Task1\Epam.Task1.Square\obj\Debug\Epam.Task1.Square.pdb
