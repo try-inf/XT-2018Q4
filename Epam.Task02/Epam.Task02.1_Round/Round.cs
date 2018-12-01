@@ -19,8 +19,8 @@ namespace Epam.Task02._1_Round
             {
                 if (value < 2)
                 {
-                    Console.WriteLine("Warning! X shouldn't be less then 1. The value is set to 1");
                     x = 1;
+                    Console.WriteLine("Warning! X shouldn't be less then 1. The value is set to {0}", x);
                 }
                 else
                 {
@@ -36,8 +36,8 @@ namespace Epam.Task02._1_Round
             {
                 if (value < 1)
                 {
-                    Console.WriteLine("Warning! Y shouldn't be less then 1. The value is set to 1");
                     y = 1;
+                    Console.WriteLine("Warning! Y shouldn't be less then 1. The value is set to {0}", y);
                 }
                 else
                 {
@@ -60,6 +60,11 @@ namespace Epam.Task02._1_Round
                         "set to {0} (the smallest axis)", r);
                     
                 }
+                else if (value < 0)
+                {
+                    r = 1;
+                    Console.WriteLine("Radius can't be negative. The value is set to {0}",r);
+                }
                 else
                 {
                     r = value;
@@ -78,12 +83,14 @@ namespace Epam.Task02._1_Round
 
         public double GetCircumference()
         {
-            return 2 * Math.PI * R;
+            double c = 2 * Math.PI * R; ;
+            return c;
         }
 
         public double GetArea()
         {
-            return Math.PI * R * R;
+            double s = Math.PI * R * R;
+            return s;
         }
      }
 }

@@ -36,7 +36,7 @@ namespace Epam.Task02._1_Round
 
             Console.WriteLine();
             Console.WriteLine("You've made a circle with center in point ({0},{1}) and Radius = {2}", myCircle.X, myCircle.Y,myCircle.R);
-            Console.WriteLine("Its circumference is {0:#.##} and its area is {1:#.##}" , myCircle.GetCircumference(), myCircle.GetArea());
+            Console.WriteLine("Its circumference is {0:N2} and its area is {1:N2}", myCircle.GetCircumference(), myCircle.GetArea());
 
             Console.WriteLine(Environment.NewLine + "Press any key to exit.");
             Console.ReadKey();
