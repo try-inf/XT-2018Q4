@@ -17,14 +17,17 @@ namespace Epam.Task02._1_Round
             get { return x; }
             set
             {
-                if (value < 2)
+                while (true)
                 {
-                    x = 1;
-                    Console.WriteLine("Warning! X shouldn't be less then 1. The value is set to {0}", x);
-                }
-                else
-                {
-                    x = value;
+                    if (value < 1)
+                    {
+                        throw new ArgumentException("Warning! X shouldn't be less then 1.");
+                    }
+                    else 
+                    {
+                        x = value;
+                        break;
+                    }
                 }
             }
         }
@@ -34,14 +37,17 @@ namespace Epam.Task02._1_Round
             get { return y; }
             set
             {
-                if (value < 1)
+                while (true)
                 {
-                    y = 1;
-                    Console.WriteLine("Warning! Y shouldn't be less then 1. The value is set to {0}", y);
-                }
-                else
-                {
-                    y = value;
+                    if (value < 1)
+                    {
+                        throw new ArgumentException("Warning! Y shouldn't be less then 1.");
+                    }
+                    else
+                    {
+                        y = value;
+                        break;
+                    }
                 }
             }
         }
@@ -51,9 +57,9 @@ namespace Epam.Task02._1_Round
             get { return r; }
             set
             {
-                if ((value > x)||(value > y))
+                if ((value > X)||(value > Y))
                 {
-                    r= (x < y) ? x : y;
+                    r= (X < Y) ? X : Y;
                     Console.WriteLine("Warning! Radius can't be less" +
                         " then the distance along the x-axis or " +
                         "y-axis to the center of the circle. The value is " +
@@ -71,6 +77,7 @@ namespace Epam.Task02._1_Round
                 }
             }
         }
+
 
         public Round() { }
 

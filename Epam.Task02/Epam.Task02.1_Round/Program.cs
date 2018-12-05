@@ -10,18 +10,19 @@ namespace Epam.Task02._1_Round
     {
         static int ReadInt(string str)
         {
-            init:
-            Console.Write(str);
-            string intStr = Console.ReadLine();
-            bool check = int.TryParse(intStr, out int result);
-            if (check)
+            while (true)
             {
-                return result;
-            }
-            else
-            {
-                Console.WriteLine("Wrong input");
-                goto init;
+                Console.Write(str);
+                string intStr = Console.ReadLine();
+                bool check = int.TryParse(intStr, out int result);
+                if (check)
+                {
+                    return result;
+                }
+                else
+                {
+                    Console.WriteLine("Wrong input");
+                }
             }
         }
 
@@ -30,8 +31,33 @@ namespace Epam.Task02._1_Round
             Round myCircle = new Round();
             Console.WriteLine("Please enter the coordinates of the center" +
                 " of the circle and its radius");
-            myCircle.X = ReadInt("X-coordinate: ");
-            myCircle.Y = ReadInt("Y-coordinate: ");
+
+            while (true)
+            {
+                try
+                {
+                    myCircle.X = ReadInt("X-coordinate: ");
+                    break;
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
+            while (true)
+            {
+                try
+                {
+                    myCircle.Y = ReadInt("Y-coordinate: ");
+                    break;
+                }
+                catch (ArgumentException ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+            }
+
             myCircle.R = ReadInt("Radius: ");
 
             Console.WriteLine();
