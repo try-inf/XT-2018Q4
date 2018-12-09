@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace Epam.Task01.FontAdjustment
 {
-    class Program
+    public class Program
     {
-       [Flags]
-        enum FontStyles
+        [Flags]
+        private enum FontStyles
         {
             None = 0,
             Bold = 1,
@@ -17,7 +17,7 @@ namespace Epam.Task01.FontAdjustment
             Underline = 4,
         }
 
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             string t = string.Empty;
             int n = 0;
@@ -52,9 +52,8 @@ namespace Epam.Task01.FontAdjustment
                         Console.WriteLine();
                         Console.WriteLine("Selected parametres: {0}", (FontStyles)sum);
                         sum = 0;
-
                     }
-                    else if (n==9)
+                    else if (n == 9)
                     {
                         break;
                     }
@@ -62,20 +61,15 @@ namespace Epam.Task01.FontAdjustment
                     {
                         Console.WriteLine("You should enter 1, 2 or 4 to choose font style (or 9-to exit)");
                     }
-
-                    
                 }
                 else
                 {
                     Console.WriteLine("Wrong input");
                 }
-
             }
 
             Console.WriteLine(Environment.NewLine + "Press any key to exit.");
             Console.ReadKey();
-            
-
         }
     }
 }

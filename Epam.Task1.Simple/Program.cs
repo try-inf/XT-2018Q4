@@ -6,48 +6,56 @@ using System.Threading.Tasks;
 
 namespace Epam.Task1.Simple
 {
-    class Program
+    public class Program
     {
-
-        static bool Simple(int N)
+        public static void Main(string[] args)
         {
-            for (int i = 2; i < N; i++)
+            while (true)
             {
-                if (N % i == 0) return false ;
-
-            }
-            
-            return true;
-        }
-
-
-        static void Main(string[] args)
-        {
-
-
-            Console.Write("Enter a positive number from 1 to ...N: ");
-            string nStr = Console.ReadLine();
-            bool check = int.TryParse(nStr, out int res);
-            if (check)
-            {
-                if (Simple(res))
+                Console.Write("Enter a positive number from 1 to ...N: ");
+                string str = Console.ReadLine();
+                bool check = int.TryParse(str, out int res);
+                if (check)
                 {
-                    Console.WriteLine("{0} is a prime number", res);
-                    Console.ReadLine();
+                    if (res >= 0)
+                    {
+                        if (Simple(res))
+                        {
+                            Console.WriteLine("{0} is a prime number", res);
+                        }
+                        else
+                        {
+                            Console.WriteLine("{0} is not a prime number", res);
+                        }
+
+                        break;
+                    }
+                    else
+                    {
+                        Console.WriteLine("You entered not positive number");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("{0} is not a prime number", res);
-                    Console.ReadLine();
-
+                    Console.WriteLine("You entered not a number");
                 }
+            }
 
-            }
-            else
+            Console.WriteLine(Environment.NewLine + "Press any key to exit.");
+            Console.ReadKey();
+        }
+
+        private static bool Simple(int n)
+        {
+            for (int i = 2; i < n; i++)
             {
-                Console.WriteLine("You entered not a number");
-                Console.ReadLine();
+                if (n % i == 0)
+                {
+                    return false;
+                }
             }
+
+            return true;
         }
     }
 }

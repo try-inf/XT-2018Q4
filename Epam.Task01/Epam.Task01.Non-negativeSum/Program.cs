@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace Epam.Task01.Non_negativeSum
 {
-    class Program
+    public class Program
     {
-    
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int[] arr = new int[] { 23, 34, -5, 6, -8, 0, -23, 56, 89 };
             Console.WriteLine("Initial array: ");
@@ -22,7 +21,6 @@ namespace Epam.Task01.Non_negativeSum
 
             Console.WriteLine(Environment.NewLine + "Press any key to exit.");
             Console.ReadKey();
-
         }
     }
 }

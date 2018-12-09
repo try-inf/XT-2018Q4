@@ -6,43 +6,49 @@ using System.Threading.Tasks;
 
 namespace Epam.Task01.AnotherTriangle
 {
-    class Program
+    public class Program
     {
-        static void AnotherTriangle(int n)
+        public static void Main(string[] args)
         {
-            for (int i = 0; i < n; i++)
+            while (true)
             {
-                for (int j = 0; j < 2 * n + 1; j++)
+                Console.Write("Enter a positive integer number: ");
+                bool check = int.TryParse(Console.ReadLine(), out int result);
+                if (check)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.Write((j < n - i)||(j > n + i) ? " ":"*");
+                    if (result > 0)
+                    {
+                        AnotherTriangle(result);
+                        break;
+                    }
                 }
-                Console.WriteLine();
+                else
+                {
+                    Console.WriteLine("Wrong input");
+                }
             }
-            Console.ResetColor();
+
+            Console.WriteLine(Environment.NewLine + "Press any key to exit.");
+            Console.ReadKey();
         }
 
-        static void Main(string[] args)
+        private static void AnotherTriangle(int n)
         {
-            Init:
-            Console.Write("Enter a positive integer number: ");
-            bool check = int.TryParse(Console.ReadLine(), out int result);
-            if (check)
+            const char Space = ' ';
+            const char Asterisk = '*';
+
+            for (int i = 0; i < n; i++)
             {
-                if (result > 0)   //check for positive value of typed number
+                for (int j = 0; j < (2 * n) + 1; j++)
                 {
-                    AnotherTriangle(result);
-                    Console.WriteLine(Environment.NewLine + "Press any key to exit.");
-                    Console.ReadKey();
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.Write((j < n - i) || (j > n + i) ? Space : Asterisk);
                 }
-                else goto Init;
-            }
-            else
-            {
-                Console.WriteLine("Wrong input");
-                goto Init;
+
+                Console.WriteLine();
             }
 
+            Console.ResetColor();
         }
     }
 }

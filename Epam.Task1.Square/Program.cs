@@ -6,78 +6,64 @@ using System.Threading.Tasks;
 
 namespace Epam.Task1.Square
 {
-    class Program
+    public class Program
     {
-        
-        static void Square(int N)
+        public static void Main(string[] args)
         {
-            for (int i = 0; i < N; i++)
+            while (true)
             {
-                for (int j = 0; j < N; j++)
+                Console.Write("Enter a positive odd number: ");
+                try
                 {
-                    if (i == N / 2 && j == N / 2)
-                        Console.Write(" ");
-                    else 
-                    Console.Write("*");
+                    int res = int.Parse(Console.ReadLine());
+                    if (res >= 0)
+                    {
+                        if (res % 2 == 0)
+                        {
+                            Console.WriteLine("You entered an even number instead of an odd one");
+                        }
+                        else
+                        {
+                            Square(res);
+                            break;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("You entered not positive number");
+                    }
                 }
-                Console.WriteLine();
+                catch (FormatException)
+                {
+                    Console.WriteLine("You entered not a number");
+                }
             }
+
+            Console.WriteLine(Environment.NewLine + "Press any key to exit.");
+            Console.ReadKey();
         }
 
-        static void Main(string[] args)
+        private static void Square(int n)
         {
-            Console.WriteLine("Enter a positive odd number: ");
+            const char Space = ' ';
+            const char Asterisk = '*';
 
-            try          //using    try..catch blocks to prevent using the incorrect format of data
+            for (int i = 0; i < n; i++)
             {
-                int res = int.Parse(Console.ReadLine());
-
-                if (res % 2 == 0)
+                for (int j = 0; j < n; j++)
                 {
-                    Console.WriteLine("Please enter an odd number (not even)");
-                    Console.ReadLine();
+                    if (i == n / 2 && j == n / 2)
+                    {
+                        Console.Write(Space);
+                    }
+                    else
+                    {
+                        Console.Write(Asterisk);
+                    }
                 }
-                else
-                {
-                    Square(res);
-                    Console.ReadLine();
-                }
+
+                Console.WriteLine();
             }
-        
-            catch(FormatException)
-            {
-                Console.WriteLine("You entered not a number");
-                Console.ReadLine();
-            }
-
-
-
-
-            /*     
-
-            //using TryParse method to prevent using the incorrect format of data
-            bool check = int.TryParse(Console.ReadLine(), out int res);
-
-            if (check)
-            {
-                if (res % 2 == 0)
-                {
-                    Console.WriteLine("Please enter an odd number (not even)");
-                    Console.ReadLine();
-                }
-                else
-                {
-                    Square(res);
-                    Console.ReadLine();
-                }
-            }
-            else
-            {
-                Console.WriteLine("You entered not a number");
-                Console.ReadLine();
-            }
-            */
-
         }
     }
 }

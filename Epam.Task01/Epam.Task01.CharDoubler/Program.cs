@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Epam.Task01.CharDoubler
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Console.WriteLine("Please enter the first string: ");
             StringBuilder sb = new StringBuilder(Console.ReadLine());
@@ -22,10 +22,9 @@ namespace Epam.Task01.CharDoubler
             }
 
             Console.WriteLine("The result string: {0}", sb.ToString());
+
             Console.WriteLine(Environment.NewLine + "Press any key to exit.");
             Console.ReadKey();
-
-
         }
     }
 }

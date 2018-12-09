@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace Epam.Task01.SumOfNumbers
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int s = 0;
             for (int i = 0; i < 1000; i++)
@@ -18,6 +18,7 @@ namespace Epam.Task01.SumOfNumbers
                     s += i;
                 }
             }
+
             Console.WriteLine(s);
             Console.WriteLine(Environment.NewLine + "Press any key to exit.");
             Console.ReadKey();

@@ -6,35 +6,38 @@ using System.Threading.Tasks;
 
 namespace Epam.Task1.Sequence
 {
-    class Program
+    public class Program
     {
-
-        static void Sequence(int N)
+       public static void Main(string[] args)
         {
-            for (int i = 1; i < N; i++)
+            while (true)
             {
-                Console.Write("{0}, ", i );
+                Console.Write("Enter a positive number from 1 to ...N: ");
+                string str = Console.ReadLine();
+                bool check = int.TryParse(str, out int res);
+                if (check)
+                {
+                    Sequence(res);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("You entered not a number");
+                }
             }
-            Console.Write(N);
+
+            Console.WriteLine(Environment.NewLine + "Press any key to exit.");
+            Console.ReadKey();
         }
 
-
-        static void Main(string[] args)
+        internal static void Sequence(int n)
         {
-            Console.Write("Enter a positive number from 1 to ...N: ");
-            string nStr = Console.ReadLine();
-            bool check = int.TryParse(nStr, out int res);
-            if (check)
+            for (int i = 1; i < n; i++)
             {
-                Sequence(res);
-                Console.ReadLine();
-            }
-            else
-            {
-                Console.WriteLine("You entered not a number");
-                Console.ReadLine();
+                Console.Write("{0}, ", i);
             }
 
+            Console.Write(n);
         }
     }
 }

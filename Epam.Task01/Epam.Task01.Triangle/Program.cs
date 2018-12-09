@@ -6,39 +6,63 @@ using System.Threading.Tasks;
 
 namespace Epam.Task01.Triangle
 {
-    class Program
+    public class Program
     {
-        static void Triangle(int n)
+        public static void Main(string[] args)
         {
-            for (int i = 0; i < n; i++)
+            int h = ReadNum("Enter a positive integer number: ");
+            Triangle(h);
+
+            Console.WriteLine(Environment.NewLine + "Press any key to exit.");
+            Console.ReadKey();
+        }
+
+        private static int ReadNum(string name)
+        {
+            while (true)
             {
-                for (int j = 0; j < n ; j++)
+                Console.Write("{0}", name);
+                string str = Console.ReadLine();
+                bool check = int.TryParse(str, out int result);
+                if (check)
                 {
-                    Console.Write(i < j ? " ":"*");
+                    if (CheckNegativeOrZero(result))
+                    {
+                        WarningMessage();
+                    }
+                    else
+                    {
+                        return result;
+                    }
                 }
-                Console.WriteLine();
+                else
+                {
+                    Console.WriteLine("Wrong input");
+                }
             }
         }
 
-        static void Main(string[] args)
+        private static bool CheckNegativeOrZero(int n)
         {
-            Init:
-            Console.Write("Enter a positive integer number: ");
-            bool check = int.TryParse(Console.ReadLine(), out int result);
-            if (check)
+            return n <= 0;
+        }
+
+        private static void WarningMessage()
+            => Console.WriteLine("Warning! You are able to enter only positive values");
+
+        private static void Triangle(int n)
+        {
+            const char Space = ' ';
+            const char Asterisk = '*';
+
+            for (int i = 0; i < n; i++)
             {
-                if (result > 0)       //check for positive value of typed number
+                for (int j = 0; j < n; j++)
                 {
-                    Triangle(result);
-                    Console.WriteLine(Environment.NewLine + "Press any key to exit.");
-                    Console.ReadKey();
+                    Console.Write(i < j ? Space : Asterisk);
                 }
-                else goto Init;
-            }
-            else
-            {
-                Console.WriteLine("Wrong input");
-                goto Init;
+
+                Console.WriteLine();
             }
         }
     }

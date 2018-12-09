@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Epam.Task01._2dArray
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
-            //int[,] arr = new int[4,2] { { 2, 4 }, { 5, 6 }, { 7, 2 }, { 4, 8 } };
             int[,] arr = new int[4, 2];
             arr[0, 0] = 2;
             arr[0, 1] = 4;
@@ -21,23 +20,26 @@ namespace Epam.Task01._2dArray
             arr[3, 0] = 4;
             arr[3, 1] = 8;
 
-            int SumEvens=0;
+            int sum_evens = 0;
             for (int i = 0; i < arr.GetLength(0); i++)
             {
                 for (int j = 0; j < arr.GetLength(1); j++)
                 {
-                    if ((i + j) % 2 == 0) SumEvens += arr[i,j];
-                    //SumEvens += arr[i,j];
-                    Console.Write("|" + arr[i,j]);
+                    if ((i + j) % 2 == 0)
+                    {
+                        sum_evens += arr[i, j];
+                    }
+
+                    Console.Write("|" + arr[i, j]);
                 }
+
                 Console.WriteLine("|");
             }
 
-            Console.WriteLine($"The sum of the elements standing on even positions: {SumEvens}");
+            Console.WriteLine($"The sum of the elements standing on even positions: {sum_evens}");
 
             Console.WriteLine(Environment.NewLine + "Press any key to exit.");
             Console.ReadKey();
-
         }
     }
 }
