@@ -79,7 +79,7 @@ namespace Epam.Task04._6_ISeekYou
         {
             Console.WriteLine("***Demo of the first method (finding all positive elements of array) ***");
 
-            ShowArray(array, "Yor random int array: ");
+            ShowArray(array, "Your random int array: ");
             Console.WriteLine();
 
             int[] result = FindAllPositive(array);
@@ -92,7 +92,7 @@ namespace Epam.Task04._6_ISeekYou
 
             Console.WriteLine("***Demo of the second method (finding all positive (Condition gets by delegate instance.) elements of array). ***");
 
-            ShowArray(array, "Yor random int array: ");
+            ShowArray(array, "Your random int array: ");
             Console.WriteLine();
 
             int[] result = FindSmthInIntArray1(array, func);
@@ -105,7 +105,7 @@ namespace Epam.Task04._6_ISeekYou
 
             Console.WriteLine("***Demo of the third method (finding all positive (Condition gets by delegate as an anonymous function) elements of array) ***");
 
-            ShowArray(array, "Yor random int array: ");
+            ShowArray(array, "Your random int array: ");
             Console.WriteLine();
 
             int[] result = FindSmthInIntArray2(array, p.positiveIntAnonymousExp);
@@ -118,7 +118,7 @@ namespace Epam.Task04._6_ISeekYou
 
             Console.WriteLine("***Demo of the fourth method (finding all positive (Condition gets by delegate as a lambda expression) elements of array) ***");
 
-            ShowArray(array, "Yor random int array: ");
+            ShowArray(array, "Your random int array: ");
             Console.WriteLine();
 
             int[] result = FindSmthInIntArray2(array, p.positiveIntLambda);
@@ -129,7 +129,7 @@ namespace Epam.Task04._6_ISeekYou
         {
             Console.WriteLine("***Demo of the fifth method (finding all positive (using LINQ) elements of array) ***");
 
-            ShowArray(array, "Yor random int array: ");
+            ShowArray(array, "Your random int array: ");
             Console.WriteLine();
 
             int[] result = Array.FindAll(array, x => x >= 0);
