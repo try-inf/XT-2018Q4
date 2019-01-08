@@ -7,16 +7,14 @@ using Epam.Task06_Users.Entities;
 
 namespace Epam.Task06_Users.BLL.Interface
 {
-    public interface IUserLogic
+    public interface IAwardLogic
     {
-        void Add(User user);
+        void Add(Award award);
 
-        bool Delete(int id);
-
-        User GetById(int id);
+        Award GetById(int id);
 
         bool CheckById(int id);
 
-        IEnumerable<User> GetAll();
+        IEnumerable<Award> GetAll();
     }
 }

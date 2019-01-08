@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Epam.Task06_Users.DAL.Interface;
 using Epam.Task06_Users.Entities;
+using Epam.Task06_Users.Entities.Exceptions;
 
 namespace Epam.Task06_Users.DAL
 {
@@ -74,6 +75,78 @@ namespace Epam.Task06_Users.DAL
             }
 
             return flag;
+        }
+
+        public User GetById(int id)
+        {
+            string[] datafromfile = null;
+            StringBuilder sb = new StringBuilder();
+            List<User> _usersFromFile = new List<User>();
+
+            if (File.Exists(_users_bd_txt))
+            {
+                datafromfile = File.ReadAllLines(_users_bd_txt);
+
+                foreach (var item in datafromfile)
+                {
+                    string[] value = item.Split(',');
+                    try
+                    {
+                        if (int.Parse(value[0]) == id)
+                        {
+                            return new User
+                            {
+                                Id = int.Parse(value[0]),
+                                Name = value[1],
+                                DateOfBirth = DateTime.Parse(value[2]),
+                                Age = int.Parse(value[3]),
+                            };
+                        }
+                    }
+                    catch
+                    {
+                        throw;
+                    }
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException("File with users not found");
+            }
+
+            throw new ValidationException("There's no such user");
+        }
+
+        public bool CheckById(int id)
+        {
+            string[] datafromfile = null;
+
+            if (File.Exists(_users_bd_txt))
+            {
+                datafromfile = File.ReadAllLines(_users_bd_txt);
+
+                foreach (var item in datafromfile)
+                {
+                    string[] value = item.Split(',');
+                    try
+                    {
+                        if (int.Parse(value[0]) == id)
+                        {
+                            return true;
+                        }
+                    }
+                    catch
+                    {
+                        throw;
+                    }
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException("File with users not found");
+            }
+
+            return false;
         }
 
         public IEnumerable<User> GetAll()

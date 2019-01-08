@@ -5,18 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 using Epam.Task06_Users.Entities;
 
-namespace Epam.Task06_Users.BLL.Interface
+namespace Epam.Task06_Users.DAL.Interface
 {
-    public interface IUserLogic
+    public interface IAwardDao
     {
-        void Add(User user);
+        void Add(Award award);
 
-        bool Delete(int id);
-
-        User GetById(int id);
+        Award GetById(int id);
 
         bool CheckById(int id);
 
-        IEnumerable<User> GetAll();
+        IEnumerable<Award> GetAll();
     }
 }

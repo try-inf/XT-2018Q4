@@ -9,6 +9,10 @@ namespace Epam.Task06_Users.DAL.Interface
 
         bool Delete(int id);
 
+        User GetById(int id);
+
+        bool CheckById(int id);
+
         IEnumerable<User> GetAll();
     }
 }

@@ -46,6 +46,16 @@ namespace Epam.Task06_Users.BLL
             return this._userDao.Delete(id);
         }
 
+        public User GetById(int id)
+        {
+            return this._userDao.GetById(id);
+        }
+
+        public bool CheckById(int id)
+        {
+            return this._userDao.CheckById(id);
+        }
+
         public IEnumerable<User> GetAll()
         {
             var cacheResult = this._cacheLogic.Get<IEnumerable<User>>(ALL_USERS_CACHE_KEY);

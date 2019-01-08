@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Epam.Task06_Users.DAL.Interface;
 using Epam.Task06_Users.Entities;
+using Epam.Task06_Users.Entities.Exceptions;
 
 namespace Epam.Task06_Users.DAL
 {
@@ -25,6 +26,18 @@ namespace Epam.Task06_Users.DAL
         public bool Delete(int id)
         {
             return _repoUsers.Remove(id);
+        }
+
+        public User GetById(int id)
+        {
+            return _repoUsers.TryGetValue(id, out var user)
+                ? user
+                : throw new ValidationException("There's no such user");
+        }
+
+        public bool CheckById(int id)
+        {
+            return _repoUsers.ContainsKey(id);
         }
 
         public IEnumerable<User> GetAll()
