@@ -206,7 +206,18 @@ namespace Epam.Task06_Users.ConsolePL
                     }
                 }
 
-                userAwardLogic.Add(useraward);
+                var getUsersWithSameId = userAwardLogic.GetAll().Where(x => x.UserId == useraward.UserId);
+                var getUsersWithSameIdAndSameAward = getUsersWithSameId.Where(x => x.AwardId == useraward.AwardId).Count();
+
+                if (getUsersWithSameIdAndSameAward > 0)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("This user already have award with id \"{0}\". He can't get this award twice.", useraward.AwardId);
+                }
+                else
+                {
+                    userAwardLogic.Add(useraward);
+                }
             }
             catch (Exception ex)
             {
