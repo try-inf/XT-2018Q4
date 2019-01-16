@@ -12,7 +12,7 @@ namespace Epam.Task07._1_DateExistance
         public static void Main(string[] args)
         {
             string text = ReadString("Please type some text that contains date (format dd-mm-yyyy): ");
-            string regPattern = @"\d{2}-\d{2}-\d{4}";
+            string regPattern = @"\b((((0[1-9]|[1-2][0-9]|30)-(0[469]|11)|(0[1-9]|[1-2][0-9]|3[01])-(0[13578]|1[02])))|((0[1-9]|[1-2][0-9])-02))-\d{4}\b";
 
             if (Regex.IsMatch(text, regPattern, RegexOptions.IgnoreCase))
             {
