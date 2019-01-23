@@ -1,0 +1,100 @@
+	body {
+		background-color: #2b3769;
+	}
+
+	.mainDiv {
+		height: 200px;
+		width: 600px;
+		background: white;
+		margin-top: 35px;
+		margin-left: 50px;
+		border-radius: 10px;
+		box-shadow: 5px 5px 50px #15161a;		
+	}
+
+	.mainDiv section {
+		height: 190px;
+		left: 5px;
+		right: 5px;
+		top: 5px;
+		bottom: 5px;
+		position: relative;
+	}
+
+	.mainDiv #center {
+		border-left: 1px solid #003775;
+		border-right: 1px solid #003775;
+	}
+
+
+	#left, #center, #right {
+		display: inline-block;
+		vertical-align: top;
+	}
+	
+	#left {
+		width: 32%;
+	}
+
+	#center {
+		width: 33%;
+	}
+
+	#right {
+		width: 32%;
+	}
+
+
+	#left .icon {
+		background-image: url(icon.jpg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-position-y: 0%;
+		height: 42px;
+	}
+
+	#center .icon {
+		background-image: url(icon.jpg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-position-y: 49%;
+		height: 42px;
+	}	
+
+	#right .icon {
+		background-image: url(icon.jpg);
+		background-repeat: no-repeat;
+		background-position: center center;
+		background-position-y: 99%;
+		height: 42px;
+	}		
+
+	p.name {
+		margin: auto;
+		margin-top: 10px;
+		text-align: center ;
+		font-family: arial;
+		font-weight: 600;
+		color: #f5740a;
+	}
+
+	p.price {
+		margin-top: 10px;
+		text-align: center;
+		font-family: arial;
+		color: 000000;
+	}
+
+	input[name="btnDetails"] {
+		padding: 5px;
+		border: none;
+		background-color: #f5740a;
+		color: white;
+	}	
+
+	p.details {
+		margin: auto;
+		margin-top: 10px;
+		padding: 5px;
+		width: 62px;
+	}
