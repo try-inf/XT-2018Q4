@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Task 9.02</title>
+	<style type="text/css">
+
+	input[name="myText"] {
+		width: 300px;
+	}
+
+	form {
+		display: inline-block;
+	}
+
+	input[name="resultText"] {
+		width: 100px;	
+	}
+	</style>
+</head>
+<body>
+
+<form>
+<p>Type arithmetic expression:</p>
+
+<input type="text" onkeypress="return event.charCode == 32 || event.charCode == 42 || event.charCode == 43 || (event.charCode >= 45 && event.charCode <= 57) || event.charCode == 61" name="myText">
+<input type="button" onclick="Run(this.form)" value="Calculate">
+<textarea rows="1" cols="15" name="resultText"></textarea>
+
+</form>
+
+<script src = "scripts.js"></script>
+</body>
+</html>

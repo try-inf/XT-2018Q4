@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Task 9.03</title>
+	<style type="text/css">
+	form {
+		padding: 20px;
+	}
+
+	select[name="left_area"], select[name="right_area"] {
+		width: 130px;
+		height: 110px;
+	}
+
+	option:checked {
+		 box-shadow: 0 0 10px 100px #60a8ab inset;
+	}
+
+	.fields {
+		display: inline-block;
+	}
+
+	.fields input {
+		display: block;
+		margin: 8px;
+	}
+	</style>
+</head>
+<body>
+
+<form>
+<select name="left_area" id = "availableField" class = "fields" multiple>
+	<option> Option 1</option>
+	<option> Option 2</option>
+	<option selected> Option 3</option>
+	<option> Option 4</option>
+	<option > Option 5</option>
+</select>
+
+<div class = "fields">
+<input type="button" onclick="chooseAll()" value=">>">
+<input type="button" onclick="chooseItem()" value=">">
+<input type="button" onclick="unChooseItem()" value="<">
+<input type="button" onclick="unChooseAll()" value="<<">
+</div>
+
+<select name="right_area" id = "selectedField" class = "fields" multiple>
+	
+</select>
+
+</form>
+
+<script src = "scripts.js"></script>
+</body>
+</html>
