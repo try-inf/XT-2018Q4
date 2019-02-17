@@ -1,0 +1,41 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.IO;
+@using System.Linq;
+@using System.Text;
+@using System.Threading.Tasks;
+@using Epam.Task06_Users.BLL.Interface;
+@using Epam.Task06_Users.Common;
+@using Epam.Task06_Users.Entities;
+
+@if (IsAjax)
+{
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    var userLogic = DependencyResolver.UserLogic;
+    var user = new User();
+
+    try
+    {
+        user.Name = Request.Params["param1"];
+        bool check = DateTime.TryParse(Request.Params["param2"], out DateTime result);
+        if (check)
+        {
+            user.DateOfBirth = result;
+            int age = (DateTime.Now - user.DateOfBirth).Days / 365;
+            user.Age = age;
+            userLogic.Add(user);
+            @:<p>User successfully added.</p>
+        }
+        else
+        {
+            @:<p>Wrong input.</p>
+            @:<p>User wasn't added.</p>
+        }
+    }
+    catch (ArgumentException ex)
+    {
+        @:<p>@ex.Message</p>
+        @:<p>User wasn't added.</p>
+    }
+    return;
+}

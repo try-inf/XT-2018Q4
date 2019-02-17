@@ -1,0 +1,49 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.IO;
+@using System.Linq;
+@using System.Text;
+@using System.Threading.Tasks;
+@using Epam.Task06_Users.BLL.Interface;
+@using Epam.Task06_Users.Common;
+@using Epam.Task06_Users.Entities;
+
+@if (IsAjax)
+{
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    var userLogic = DependencyResolver.UserLogic;
+
+    @:<link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+
+    try
+    {
+        <text>
+         <table>
+             <tr>
+                 <th>Id</th>
+                 <th>Name</th>
+                 <th>DateOfBirth</th>
+                 <th>Age </th>
+             </tr>
+        </text>
+        foreach (var users in userLogic.GetAll())
+        {
+            <text>
+             <tr>
+                 <td>@(users.Id)</td>
+                 <td>@(users.Name)</td>
+                 <td>@($"{users.DateOfBirth:D}")</td>
+                 <td>@(users.Age)</td>
+             </tr>
+             </text>
+        }
+        @:</table>
+    }
+    catch (FileNotFoundException ex)
+    {
+         <p>Error: @ex.Message </p>
+         <p>Before using this option, create at least one user.</p>
+    }
+
+    return;
+}

@@ -1,0 +1,55 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.IO;
+@using System.Linq;
+@using System.Text;
+@using System.Threading.Tasks;
+@using Epam.Task06_Users.BLL.Interface;
+@using Epam.Task06_Users.Common;
+@using Epam.Task06_Users.Entities;
+
+@if (IsAjax)
+{
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    var userLogic = DependencyResolver.UserLogic;
+
+    @:<link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+
+    try
+    {
+        int _userId;
+        bool check = int.TryParse(Request.Params["param1"], out int result);
+        if (check)
+        {
+            if (userLogic.CheckById(result))
+            {
+                _userId = result;
+
+                if (userLogic.Delete(_userId))
+                {
+                    @: <p>User with Id "@_userId" was successfully removed.</p>
+                }
+                else
+                {
+                    @: <p>User with Id "@_userId" wasn't removed.</p>
+                }
+            }
+            else
+            {
+                @: <p>There's no user with such Id.</p>
+            }
+        }
+        else
+        {
+            @:<p>Wrong input.</p>
+            @:<p>You should use only digits.</p>
+        }
+
+    }
+    catch (FileNotFoundException ex)
+    {
+        <p>Error: @ex.Message</p>
+    }
+
+    return;
+}

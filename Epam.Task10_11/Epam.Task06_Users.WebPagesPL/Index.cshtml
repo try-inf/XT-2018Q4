@@ -1,0 +1,48 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+
+</head>
+<body>
+
+    <div class="menu">
+        <input type="button" value="Create User" onclick="createUser()" />
+        <input type="button" value="Show list of users" onclick="showUsers()" />
+        <input type="button" value="Remove user" onclick="removeUser()" />
+        <input type="button" value="Award user" onclick="awardUser()" />
+        <input type="button" value="Create award" onclick="createAward()" />
+        <input type="button" value="Show list of awards" onclick="showAwards()" />
+        <input type="button" value="Show more detailed information about users" onclick="showDetails()" />
+    </div>
+
+    <div class="menu">
+        <form id="inputForm">
+            <div>
+                <label id="label1"></label>
+                <input type="text" id="input1" />
+                <label id="label2"></label>
+                <input type="text" id="input2" />
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    @*<div>
+        <h2>Result</h2>
+        <p id="result">@Environment.CurrentDirectory</p>
+    </div>*@
+    <div id="devResult">
+    </div>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    <script src="~/Scripts/myScripts.js"></script>
+
+</body>
+</html>

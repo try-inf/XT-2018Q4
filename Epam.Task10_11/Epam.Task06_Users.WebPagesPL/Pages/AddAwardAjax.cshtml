@@ -1,0 +1,29 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.IO;
+@using System.Linq;
+@using System.Text;
+@using System.Threading.Tasks;
+@using Epam.Task06_Users.BLL.Interface;
+@using Epam.Task06_Users.Common;
+@using Epam.Task06_Users.Entities;
+
+@if (IsAjax)
+{
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    var awardLogic = DependencyResolver.AwardLogic;
+    var award = new Award();
+
+    try
+    {
+        award.Title = Request.Params["param1"];
+        awardLogic.Add(award);
+        @:<p>Award successfully added.</p>
+    }
+    catch (ArgumentException ex)
+    {
+        @:<p>@ex.Message</p>
+        @:<p>Award wasn't added.</p>
+    }
+    return;
+}

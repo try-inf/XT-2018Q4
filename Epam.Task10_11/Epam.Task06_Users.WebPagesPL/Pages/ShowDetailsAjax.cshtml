@@ -1,0 +1,81 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.IO;
+@using System.Linq;
+@using System.Text;
+@using System.Threading.Tasks;
+@using Epam.Task06_Users.BLL.Interface;
+@using Epam.Task06_Users.Common;
+@using Epam.Task06_Users.Entities;
+
+@if (IsAjax)
+{
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    var userLogic = DependencyResolver.UserLogic;
+    var awardLogic = DependencyResolver.AwardLogic;
+    var userAwardLogic = DependencyResolver.UserAwardLogic;
+
+    @:<link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+
+    try
+    {
+        int _userId;
+        User selectedUser = new User();
+        bool check = int.TryParse(Request.Params["param1"], out int result);
+        if (check)
+        {
+            if (userLogic.CheckById(result))
+            {
+                _userId = result;
+                selectedUser = userLogic.GetById(_userId);
+
+                <text>
+                    <p>Detailed information about selected user:</p>
+                    <br />
+                    User Id: @selectedUser.Id
+                    <br />
+                    User Name: @selectedUser.Name
+                    <br />
+                    User date of birth: @($"{selectedUser.DateOfBirth:D}")
+                    <br />
+                    User age: @selectedUser.Age
+                </text>
+
+                if (userAwardLogic.GetAll().Where(x => x.UserId == selectedUser.Id).Count() == 0)
+                {
+                    @: <p>User @selectedUser.Name has not any awards.</p>
+                }
+                else
+                {
+                    @: <p>The awards list of @selectedUser.Name :</p>
+
+
+                    foreach (var item in userAwardLogic.GetAll())
+                    {
+                        if (item.UserId == selectedUser.Id)
+                        {
+                            @: <p>@awardLogic.GetById(item.AwardId).Title</p>
+                        }
+                    }
+                }
+
+            }
+            else
+            {
+                @:<p>There's no user with such Id.</p>
+            }
+        }
+        else
+        {
+            @:<p>Wrong input.</p>
+            @:<p>You should use only digits.</p>
+        }
+        
+    }
+    catch (FileNotFoundException ex)
+    {
+        <p>Error: @ex.Message</p>
+    }
+
+    return;
+}

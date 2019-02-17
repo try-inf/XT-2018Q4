@@ -1,0 +1,90 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.IO;
+@using System.Linq;
+@using System.Text;
+@using System.Threading.Tasks;
+@using Epam.Task06_Users.BLL.Interface;
+@using Epam.Task06_Users.Common;
+@using Epam.Task06_Users.Entities;
+
+@if (IsAjax)
+{
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    var userLogic = DependencyResolver.UserLogic;
+    var awardLogic = DependencyResolver.AwardLogic;
+    var userAwardLogic = DependencyResolver.UserAwardLogic;
+
+    var useraward = new UserAward();
+
+    try
+    {
+        bool check = int.TryParse(Request.Params["param1"], out int result);
+        if (check)
+        {
+            int _userId = result;
+            if (userLogic.CheckById(_userId))
+            {
+                useraward.UserId = _userId;
+            }
+            else
+            {
+                @:<p>There's no user with such Id.</p>
+            }
+        }
+        else
+        {
+            @:<p>Wrong input.</p>
+            @:<p>You should use only digits.</p>
+        }
+
+        bool check1 = int.TryParse(Request.Params["param2"], out int result1);
+        if (check1)
+        {
+            int _awardId = result1;
+            if (awardLogic.CheckById(_awardId))
+            {
+                useraward.AwardId = _awardId;
+            }
+            else
+            {
+                @:<p>There's no award with such Id.</p>
+            }
+        }
+        else
+        {
+            @:<p>Wrong input.</p>
+            @:<p>You should use only digits.</p>
+        }
+
+        if (userAwardLogic.checkUsersAwards())
+        {
+
+            var getUsersWithSameId = userAwardLogic.GetAll().Where(x => x.UserId == useraward.UserId);
+            var getUsersWithSameIdAndSameAward = getUsersWithSameId.Where(x => x.AwardId == useraward.AwardId).Count();
+
+            if (getUsersWithSameIdAndSameAward > 0)
+            {
+                @:<p>This user already have award with id @useraward.AwardId . He can't get this award twice.</p>
+            }
+            else
+            {
+                userAwardLogic.Add(useraward);
+                @:<p>User was successfully awarded!</p>
+            }
+
+            getUsersWithSameIdAndSameAward = 0;
+        }
+        else
+        {
+            userAwardLogic.Add(useraward);
+            @:<p>User was successfully awarded!</p>
+        }
+    }
+    catch (Exception ex)
+    {
+        @:<p>Error: @ex.Message</p>
+    }
+
+    return;
+}
