@@ -1,0 +1,90 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.IO;
+@using System.Linq;
+@using System.Text;
+@using System.Threading.Tasks;
+@using Epam.Task06_Users.BLL.Interface;
+@using Epam.Task06_Users.Common;
+@using Epam.Task06_Users.Entities;
+
+@if (IsAjax)
+{
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    var userLogic = DependencyResolver.UserLogic;
+
+    @:<link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+    @:<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+    @:<script src="~/Scripts/myScripts.js"></script>
+
+    try
+    {
+        int _userId;
+        User selectedUser = new User();
+        bool check = int.TryParse(Request.Params["param1"], out int result);
+        if (check)
+        {
+            if (userLogic.CheckById(result))
+            {
+                _userId = result;
+                selectedUser = userLogic.GetById(_userId);
+
+                <text>
+                    <p>You can edit user settings here:</p>
+                    <br />
+                    <div class="edit">
+                        <form id="editForm">
+                            <div>
+                                <label id="editLabel1">User name:</label>
+                                <input type="text" value="@selectedUser.Name" id="editInput1" />
+                                <label id="editLabel2">User date of birth</label>
+                                <input type="text" value="@selectedUser.DateOfBirth.ToShortDateString()" id="editInput2" />
+                                <button type="submit">Apply changes</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div id="editResult">
+                    </div>
+                </text>
+
+                <script>
+                    (function () {
+                        var $inputparam1 = $("input[id=editinput1]"),
+                            $inputparam2 = $("input[id=editinput2]"),
+                            $inputparam3 = _userid;
+
+                        $("#editform").submit(function () {
+                            $.ajax({
+                                method: "post",
+                                url: "/pages/edituserapplyajax",
+                                data: { param1: $inputparam1.val(), param2: $inputparam2.val(), param3: $inputparam3.val() },
+                                success: function (response) {
+                                    document.getelementbyid('editresult').innerhtml = response;
+                                },
+                            })
+                            return false;
+                        })
+                    })();
+
+                </script>
+            }
+            else
+            {
+                @:<p>There's no user with such Id.</p>
+            }
+        }
+        else
+        {
+            @:<p>Wrong input.</p>
+            @:<p>You should use only digits.</p>
+        }
+
+    }
+    catch (FileNotFoundException ex)
+    {
+        <p>Error: @ex.Message</p>
+    }
+
+    return;
+}

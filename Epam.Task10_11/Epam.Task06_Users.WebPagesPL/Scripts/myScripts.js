@@ -1,4 +1,5 @@
 ﻿function createUser() {
+    document.getElementById('buttons_div').style.display = 'none';
     document.getElementById('inputForm').style.display = 'block';
     document.getElementById('label2').style.display = 'block';
     document.getElementById('input2').style.display = 'block';
@@ -7,8 +8,7 @@
     document.getElementById('label2').innerHTML = 'Enter date of birth(in format dd- mm - yyyy or dd.mm.yyyy):';
 
     var $inputParam1 = $("input[id=input1]"),
-        $inputParam2 = $("input[id=input2]"),
-        $result = $("#result");
+        $inputParam2 = $("input[id=input2]");
 
     $("#inputForm").submit(function () {
         $.ajax({
@@ -21,11 +21,38 @@
         })
         return false;
     })
+
     document.getElementById('input1').innerText = "";
     document.getElementById('input2').innerText = "";
 }
 
+function editUser() {
+    document.getElementById('buttons_div').style.display = 'none';
+    document.getElementById('inputForm').style.display = 'block';
+    document.getElementById('label1').innerHTML = 'Enter the Id of user to edit details:';
+    document.getElementById('label2').style.display = 'none';
+    document.getElementById('input2').style.display = 'none';
+    document.getElementById('devResult').innerHTML = '';
+
+    var $inputParam1 = $("input[id=input1]");
+
+    $("#inputForm").submit(function () {
+        $.ajax({
+            method: "POST",
+            url: "/Pages/EditUserAjax",
+            data: { param1: $inputParam1.val() },
+            success: function (response) {
+                document.getElementById('devResult').innerHTML = response;
+            },
+        })
+
+        return false;
+    })
+    document.getElementById('input1').innerText = "";
+}
+
 function showUsers() {
+    document.getElementById('buttons_div').style.display = 'none';
     document.getElementById('inputForm').style.display = 'none';
     document.getElementById('devResult').innerHTML = ''; 
 
@@ -39,14 +66,14 @@ function showUsers() {
 }
 
 function removeUser() {
+    document.getElementById('buttons_div').style.display = 'none';
     document.getElementById('inputForm').style.display = 'block';
     document.getElementById('label1').innerHTML = 'Enter the Id of user you want to remove:';
     document.getElementById('label2').style.display = 'none';
     document.getElementById('input2').style.display = 'none';
     document.getElementById('devResult').innerHTML = '';
 
-    var $inputParam1 = $("input[id=input1]"),
-        $result = $("#result");
+    var $inputParam1 = $("input[id=input1]");
 
     $("#inputForm").submit(function () {
         $.ajax({
@@ -63,14 +90,14 @@ function removeUser() {
 }
 
 function createAward() {
+    document.getElementById('buttons_div').style.display = 'none';
     document.getElementById('inputForm').style.display = 'block';
     document.getElementById('label1').innerHTML = 'Enter the title of award:';
     document.getElementById('label2').style.display = 'none';
     document.getElementById('input2').style.display = 'none';
     document.getElementById('devResult').innerHTML = ''; 
 
-    var $inputParam1 = $("input[id=input1]"),
-        $result = $("#result");
+    var $inputParam1 = $("input[id=input1]");
 
     $("#inputForm").submit(function () {
         $.ajax({
@@ -87,6 +114,7 @@ function createAward() {
 }
 
 function showAwards() {
+    document.getElementById('buttons_div').style.display = 'none';
     document.getElementById('inputForm').style.display = 'none';
     document.getElementById('devResult').innerHTML = '';
 
@@ -99,7 +127,49 @@ function showAwards() {
     })
 }
 
+function removeAward() {
+    document.getElementById('inputForm').style.display = 'none';
+    document.getElementById('buttons_div').style.display = 'inline-block';
+    
+ 
+    $("#button_accept").submit(function () {
+        document.getElementById('buttons_div').style.display = 'none';
+        document.getElementById('inputForm').style.display = 'block';
+        document.getElementById('label1').innerHTML = 'Enter the Id of award you want to remove:';
+        document.getElementById('label2').style.display = 'none';
+        document.getElementById('input2').style.display = 'none';
+        document.getElementById('devResult').innerHTML = '';
+        return false;
+    })
+
+    $("#button_cancel").submit(function () {
+        document.getElementById('buttons_div').style.display = 'none';
+        document.getElementById('inputForm').style.display = 'none';
+        document.getElementById('label1').innerHTML = 'Enter the Id of award you want to remove:';
+        document.getElementById('label2').style.display = 'none';
+        document.getElementById('input2').style.display = 'none';
+        document.getElementById('devResult').innerHTML = '';
+        return false;
+    })
+
+    var $inputParam1 = $("input[id=input1]");
+    
+    $("#inputForm").submit(function () {
+        $.ajax({
+            method: "POST",
+            url: "/Pages/RemoveAwardAjax",
+            data: { param1: $inputParam1.val() },
+            success: function (response) {
+                document.getElementById('devResult').innerHTML = response;
+            },
+        })
+        return false;
+    })
+    document.getElementById('input1').innerText = "";
+}
+
 function awardUser() {
+    document.getElementById('buttons_div').style.display = 'none';
     document.getElementById('inputForm').style.display = 'block';
     document.getElementById('label2').style.display = 'block';
     document.getElementById('input2').style.display = 'block';
@@ -127,6 +197,7 @@ function awardUser() {
 }
 
 function showDetails() {
+    document.getElementById('buttons_div').style.display = 'none';
     document.getElementById('inputForm').style.display = 'block';
     document.getElementById('label1').innerHTML = 'Enter the Id of user:';
     document.getElementById('label2').style.display = 'none';

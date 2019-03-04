@@ -18,5 +18,7 @@ namespace Epam.Task06_Users.BLL.Interface
         bool CheckById(int id);
 
         IEnumerable<User> GetAll();
+
+        bool Edit(int id, User editUser);
     }
 }

@@ -14,5 +14,7 @@ namespace Epam.Task06_Users.BLL.Interface
         IEnumerable<UserAward> GetAll();
 
         bool checkUsersAwards();
+
+        bool Delete(int id);
     }
 }

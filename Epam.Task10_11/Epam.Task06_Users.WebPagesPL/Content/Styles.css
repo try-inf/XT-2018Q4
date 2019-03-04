@@ -11,7 +11,13 @@
 
 #inputForm {
     display: none;
+    margin: 8px;
 }
+
+#buttons_div {
+    display: none;
+}
+
 
 .menu {
     display: inline-block;

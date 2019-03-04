@@ -39,5 +39,10 @@ namespace Epam.Task06_Users.DAL
         {
             return _repoAwards.Values;
         }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

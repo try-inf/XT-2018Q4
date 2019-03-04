@@ -16,5 +16,7 @@ namespace Epam.Task06_Users.DAL.Interface
         bool CheckById(int id);
 
         IEnumerable<Award> GetAll();
+
+        bool Delete(int id);
     }
 }

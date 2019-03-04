@@ -1,0 +1,66 @@
+﻿@using System;
+@using System.Collections.Generic;
+@using System.IO;
+@using System.Linq;
+@using System.Text;
+@using System.Threading.Tasks;
+@using Epam.Task06_Users.BLL.Interface;
+@using Epam.Task06_Users.Common;
+@using Epam.Task06_Users.Entities;
+
+@if (IsAjax)
+{
+    Environment.CurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+    var awardLogic = DependencyResolver.AwardLogic;
+    var userAwardLogic = DependencyResolver.UserAwardLogic;
+
+    @:<link rel="stylesheet" type="text/css" href="~/Content/Styles.css" />
+
+    
+    try
+    {
+        int _awardId;
+        bool check = int.TryParse(Request.Params["param1"], out int result);
+        if (check)
+        {
+            if (awardLogic.CheckById(result))
+            {
+                _awardId = result;
+
+
+
+                if (awardLogic.Delete(_awardId))
+                {
+                    if (userAwardLogic.Delete(_awardId))
+                    {
+                        @: <p>Award with Id "@_awardId" was successfully removed.</p>
+                    }
+                    else
+                    {
+                        @: <p>Award with Id "@_awardId" wasn't removed.</p>
+                    }
+                }
+                else
+                {
+                    @: <p>Award with Id "@_awardId" wasn't removed.</p>
+                }
+            }
+            else
+            {
+                @: <p>There's no award with such Id.</p>
+            }
+        }
+        else
+        {
+            @:<p>Wrong input.</p>
+            @:<p>You should use only digits.</p>
+        }
+
+    }
+    catch (FileNotFoundException ex)
+    {
+        <p>Error: @ex.Message</p>
+    }
+
+    return;
+}

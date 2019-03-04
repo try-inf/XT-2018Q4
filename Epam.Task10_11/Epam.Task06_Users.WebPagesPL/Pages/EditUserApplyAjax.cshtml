@@ -18,24 +18,25 @@
     {
         user.Name = Request.Params["param1"];
         bool check = DateTime.TryParse(Request.Params["param2"], out DateTime result);
+        int id = int.Parse(Request.Params["param3"]);
         if (check)
         {
             user.DateOfBirth = result;
             int age = (DateTime.Now - user.DateOfBirth).Days / 365;
             user.Age = age;
-            userLogic.Add(user);
-            @:<p>User successfully added. - filename: @fname</p>
+            userLogic.Edit(id, user);
+            @:<p>User successfully modified.</p>
         }
         else
         {
             @:<p>Wrong input.</p>
-            @:<p>User wasn't added.</p>
+            @:<p>User wasn't modified.</p>
         }
     }
     catch (ArgumentException ex)
     {
         @:<p>@ex.Message</p>
-        @:<p>User wasn't added.</p>
+        @:<p>User wasn't modified.</p>
     }
     return;
 }

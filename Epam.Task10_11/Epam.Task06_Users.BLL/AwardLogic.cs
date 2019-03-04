@@ -64,5 +64,11 @@ namespace Epam.Task06_Users.BLL
 
             return cacheResult;
         }
+
+        public bool Delete(int id)
+        {
+            this._cacheLogic.Delete(ALL_AWARDS_CACHE_KEY);
+            return this._awardDao.Delete(id);
+        }
     }
 }

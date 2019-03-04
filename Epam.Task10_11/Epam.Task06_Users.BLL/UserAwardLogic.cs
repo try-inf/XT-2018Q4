@@ -45,5 +45,10 @@ namespace Epam.Task06_Users.BLL
         {
             return this._userAwardDao.checkUsersAwards();
         }
+
+        public bool Delete(int id)
+        {
+            return this._userAwardDao.Delete(id);
+        }
     }
 }

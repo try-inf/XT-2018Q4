@@ -76,5 +76,44 @@ namespace Epam.Task06_Users.DAL
         {
             return File.Exists(_usersawards_bd_txt);
         }
+
+        public bool Delete(int id)
+        {
+            string[] datafromfile = null;
+            StringBuilder sb = new StringBuilder();
+            bool flag = false;
+
+            if (File.Exists(_usersawards_bd_txt))
+            {
+                datafromfile = File.ReadAllLines(_usersawards_bd_txt);
+
+                int seekId = 0;
+                for (int i = 0; i < datafromfile.Length; i++)
+                {
+                    string[] value = datafromfile[i].Split(',');
+                    seekId = int.Parse(value[2]);
+                    if (seekId != id)
+                    {
+                        sb = sb.Append(value[0]).Append(",").Append(value[1]).Append(",").Append(value[2]).Append(Environment.NewLine);
+                    }
+
+                    if (seekId == id)
+                    {
+                        flag = true;
+                    }
+                }
+
+                using (StreamWriter sw = File.CreateText(_usersawards_bd_txt))
+                {
+                    sw.Write(sb.ToString());
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException("File with users and awards not found!");
+            }
+
+            return flag;
+        }
     }
 }

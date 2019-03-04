@@ -98,6 +98,9 @@
     <Content Include="Pages\AwardUserAjax.cshtml" />
     <Content Include="Pages\ShowDetailsAjax.cshtml" />
     <Content Include="Pages\RemoveUserAjax.cshtml" />
+    <Content Include="Pages\EditUserAjax.cshtml" />
+    <Content Include="Pages\EditUserApplyAjax.cshtml" />
+    <Content Include="Pages\RemoveAwardAjax.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

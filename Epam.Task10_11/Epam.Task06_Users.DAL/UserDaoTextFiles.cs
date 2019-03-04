@@ -187,5 +187,48 @@ namespace Epam.Task06_Users.DAL
 
             return _usersFromFile;
         }
+
+        public bool Edit(int id, User editUser)
+        {
+            string[] datafromfile = null;
+            StringBuilder sb = new StringBuilder();
+            bool flag = false;
+
+            if (File.Exists(_users_bd_txt))
+            {
+                datafromfile = File.ReadAllLines(_users_bd_txt);
+
+                int seekId = 0;
+                for (int i = 0; i < datafromfile.Length; i++)
+                {
+                    string[] value = datafromfile[i].Split(',');
+                    seekId = int.Parse(value[0]);
+                    if (seekId != id)
+                    {
+                        sb = sb.Append(value[0]).Append(",").Append(value[1]).Append(",")
+                            .Append(value[2]).Append(",").Append(value[3]).Append(Environment.NewLine);
+                    }
+
+                    if (seekId == id)
+                    {
+                        sb = sb.Append(value[0]).Append(",").Append(editUser.Name).Append(",")
+                            .Append(editUser.DateOfBirth).Append(",").Append(editUser.Age).Append(Environment.NewLine);
+
+                        flag = true;
+                    }
+                }
+
+                using (StreamWriter sw = File.CreateText(_users_bd_txt))
+                {
+                    sw.Write(sb.ToString());
+                }
+            }
+            else
+            {
+                throw new FileNotFoundException("File with users not found!");
+            }
+
+            return flag;
+        }
     }
 }

@@ -15,12 +15,25 @@
 
     <div class="menu">
         <input type="button" value="Create User" onclick="createUser()" />
+        <input type="button" value="Edit User details" onclick="editUser()" />
         <input type="button" value="Show list of users" onclick="showUsers()" />
         <input type="button" value="Remove user" onclick="removeUser()" />
         <input type="button" value="Award user" onclick="awardUser()" />
         <input type="button" value="Create award" onclick="createAward()" />
+        <input type="button" value="Edit award details" onclick="" />
         <input type="button" value="Show list of awards" onclick="showAwards()" />
+        <input type="button" value="Remove award" onclick="removeAward()" />
         <input type="button" value="Show more detailed information about users" onclick="showDetails()" />
+    </div>
+
+    <div id="buttons_div">
+        <label id="label_btn">If you remove some award, it will be removed from all users </label>
+        <form id="button_accept">
+            <button type="submit">Remove award</button>
+        </form>
+        <form id="button_cancel">
+            <button type="submit">Do not remove award</button>
+        </form>
     </div>
 
     <div class="menu">
@@ -34,10 +47,7 @@
             </div>
         </form>
     </div>
-    @*<div>
-        <h2>Result</h2>
-        <p id="result">@Environment.CurrentDirectory</p>
-    </div>*@
+
     <div id="devResult">
     </div>
 

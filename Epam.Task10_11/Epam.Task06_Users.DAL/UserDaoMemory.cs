@@ -44,5 +44,10 @@ namespace Epam.Task06_Users.DAL
         {
             return _repoUsers.Values;
         }
+
+        public bool Edit(int id, User editUser)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

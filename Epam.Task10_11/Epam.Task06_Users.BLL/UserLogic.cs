@@ -70,5 +70,11 @@ namespace Epam.Task06_Users.BLL
 
             return cacheResult;
         }
+
+        public bool Edit(int id, User editUser)
+        {
+            this._cacheLogic.Delete(ALL_USERS_CACHE_KEY);
+            return this._userDao.Edit(id, editUser);
+        }
     }
 }

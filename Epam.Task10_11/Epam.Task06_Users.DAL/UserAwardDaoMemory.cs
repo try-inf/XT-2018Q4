@@ -32,5 +32,10 @@ namespace Epam.Task06_Users.DAL
         {
             return true;
         }
+
+        public bool Delete(int id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
